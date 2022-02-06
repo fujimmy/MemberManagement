@@ -24,6 +24,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("關於", "About", "Home")</li>
                     <li>@Html.ActionLink("連絡人", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Member", "Index", "Member")</li>
                 </ul>
             </div>
         </div>
@@ -38,6 +39,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @*註冊vue*@
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
