@@ -18,7 +18,11 @@
             <div class="form-group">
                 <label>EMail</label>
                 <input type="text" class="form-control" v-model="form.UserEmail">
-            </div>
+            </div>            
+            <div class="form-group">
+            <label>Birthday</label>
+            <input type="date" class="form-control" v-model="form.Birthday">
+        </div>          
         </div>
         <div class="panel-footer">
             <button type="button" class="btn btn-primary" v-on:click="DoRegister()">註冊</button>
@@ -61,6 +65,7 @@
                     postData['UserPwd'] = self.form.UserPwd;
                     postData['UserName'] = self.form.UserName;
                     postData['UserEmail'] = self.form.UserEmail;
+                    postData['Birthday'] = self.form.Birthday;
 
                     // 使用 jQuery Ajax 傳送至後端
                     $.ajax({
@@ -83,5 +88,6 @@
                 }
             }
         })
+      
     </script>
 }

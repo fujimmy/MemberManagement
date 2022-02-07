@@ -79,7 +79,6 @@ C:\Users\Jimmyfu\source\repos\MemberManagement\MemberManagement\bin\zh-Hant\Syst
 C:\Users\Jimmyfu\source\repos\MemberManagement\MemberManagement\bin\zh-Hant\System.Web.WebPages.resources.dll
 C:\Users\Jimmyfu\source\repos\MemberManagement\MemberManagement\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Jimmyfu\source\repos\MemberManagement\MemberManagement\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
-C:\Users\Jimmyfu\source\repos\MemberManagement\MemberManagement\obj\Debug\MemberManagement.csproj.AssemblyReference.cache
 C:\Users\Jimmyfu\source\repos\MemberManagement\MemberManagement\obj\Debug\MemberManagement.csproj.CoreCompileInputs.cache
 C:\Users\Jimmyfu\source\repos\MemberManagement\MemberManagement\obj\Debug\MemberManagement.csproj.CopyComplete
 C:\Users\Jimmyfu\source\repos\MemberManagement\MemberManagement\obj\Debug\MemberManagement.dll
