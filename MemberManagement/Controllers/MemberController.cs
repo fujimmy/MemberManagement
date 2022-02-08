@@ -59,7 +59,7 @@ namespace MemberManagement.Controllers
             {
                 outModel.ErrMsg = "請輸入資料";
             }
-            else if (MemberManagement.Extension.ValidateRegister.CheckRegister(inModel).ErrMsg != String.Empty)
+            else if (MemberManagement.Extension.ValidateRegister.CheckRegister(inModel).ErrMsg != null)
             {
                 outModel = MemberManagement.Extension.ValidateRegister.CheckRegister(inModel);
             }
@@ -108,7 +108,7 @@ namespace MemberManagement.Controllers
                         string NewPwd = result.ToString(); // 雜湊運算後密碼
 
                         // 註冊資料新增至資料庫
-                        sql = @"INSERT INTO Member (UserID,UserPwd,UserName,UserEmail,RegisterTime) VALUES (@UserID, @UserPwd, @UserName, @UserEmail, @RegisterTime)";
+                        sql = @"INSERT INTO Member (UserID,UserPwd,UserName,UserEmail,BirthDay,Age,UserLevel,RegisterTime) VALUES (@UserID, @UserPwd, @UserName, @UserEmail,@BirthDay,@Age,@UserLevel, @RegisterTime)";
                         cmd = new SqlCommand();
                         cmd.Connection = conn;
                         cmd.CommandText = sql;
@@ -118,7 +118,10 @@ namespace MemberManagement.Controllers
                         cmd.Parameters.AddWithValue("@UserPwd", NewPwd); // 雜湊運算後密碼
                         cmd.Parameters.AddWithValue("@UserName", inModel.UserName);
                         cmd.Parameters.AddWithValue("@UserEmail", inModel.UserEmail);
-                        cmd.Parameters.AddWithValue("@RegisterTime", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@BirthDay", inModel.BirthDay);                        
+                        cmd.Parameters.AddWithValue("@Age", inModel.Age);
+                        cmd.Parameters.AddWithValue("@UserLevel", 1);//default 1
+                        cmd.Parameters.AddWithValue("@RegisterTime", inModel.RegisterTime);
 
                         // 執行資料庫更新動作
                         cmd.ExecuteNonQuery();

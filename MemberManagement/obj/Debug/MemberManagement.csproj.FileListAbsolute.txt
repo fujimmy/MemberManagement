@@ -83,3 +83,4 @@ C:\Users\Jimmyfu\source\repos\MemberManagement\MemberManagement\obj\Debug\Member
 C:\Users\Jimmyfu\source\repos\MemberManagement\MemberManagement\obj\Debug\MemberManagement.csproj.CopyComplete
 C:\Users\Jimmyfu\source\repos\MemberManagement\MemberManagement\obj\Debug\MemberManagement.dll
 C:\Users\Jimmyfu\source\repos\MemberManagement\MemberManagement\obj\Debug\MemberManagement.pdb
+C:\Users\Jimmyfu\source\repos\MemberManagement\MemberManagement\obj\Debug\MemberManagement.csproj.AssemblyReference.cache
