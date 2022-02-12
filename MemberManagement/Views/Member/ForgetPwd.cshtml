@@ -1,31 +1,15 @@
 ﻿<div id="VuePage">
-    <!--使用 Bootstrap 設計註冊表單-->
+    <!--使用 Bootstrap 設計表單-->
     <div class="panel panel-primary">
-        <div class="panel-heading">註冊頁面範例</div>
+        <div class="panel-heading">忘記密碼範例</div>
         <div class="panel-body">
             <div class="form-group">
                 <label>帳號</label>
                 <input type="text" class="form-control" v-model="form.UserID">
             </div>
-            <div class="form-group">
-                <label>密碼</label>
-                <input type="password" class="form-control" v-model="form.UserPwd">
-            </div>
-            <div class="form-group">
-                <label>姓名</label>
-                <input type="text" class="form-control" v-model="form.UserName">
-            </div>
-            <div class="form-group">
-                <label>EMail</label>
-                <input type="text" class="form-control" v-model="form.UserEmail">
-            </div>            
-            <div class="form-group">
-            <label>Birthday</label>
-            <input type="date" class="form-control" v-model="form.Birthday">
-        </div>          
         </div>
         <div class="panel-footer">
-            <button type="button" class="btn btn-primary" v-on:click="DoRegister()">註冊</button>
+            <button type="button" class="btn btn-primary" v-on:click="SendMailToken()">寄送驗證碼</button>
         </div>
     </div>
 
@@ -40,11 +24,11 @@
                 <div class="modal-body" id="ErrorMsg" style="overflow-x:auto;width:100%;">
 
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
+            </div>
+        </div>
     </div><!-- /.modal -->
 </div>
-@section scripts {
+@section scripts{
     <script>
         var VuePage = new Vue({
             el: '#VuePage'
@@ -55,40 +39,40 @@
                 return data;
             }
             , methods: {
-                // 執行註冊按鈕
-                DoRegister: function () {
+                // 前端驗證權杖
+                GetToken: function () {
+                    var token = '@Html.AntiForgeryToken()';
+                    token = $(token).val();
+                    return token;
+                }
+                // 寄送驗證碼
+                , SendMailToken: function () {
                     var self = this;
 
                     // 組合表單資料
                     var postData = {};
                     postData['UserID'] = self.form.UserID;
-                    postData['UserPwd'] = self.form.UserPwd;
-                    postData['UserName'] = self.form.UserName;
-                    postData['UserEmail'] = self.form.UserEmail;
-                    postData['Birthday'] = self.form.Birthday;
 
                     // 使用 jQuery Ajax 傳送至後端
                     $.ajax({
-                        url:'@Url.Content("~/Member/DoRegister")',
+                        url:'@Url.Action("SendMailToken", "Member")',
                         method:'POST',
                         dataType:'json',
-                        data: { inModel: postData },
+                        data: { inModel: postData, __RequestVerificationToken: self.GetToken() },
                         success: function (datas) {
                             if (datas.ErrMsg) {
                                 alert(datas.ErrMsg);
                                 return;
                             }
                             alert(datas.ResultMsg);
-                            window.location = '@Url.Content("~/Member/Index")';
                         },
                         error: function (err) {
                             $('#ErrorMsg').html(err.responseText);
                             $('#ErrorAlert').modal('toggle');
-                        },
+                        }
                     });
                 }
             }
         })
-
     </script>
 }

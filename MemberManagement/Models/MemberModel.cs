@@ -25,12 +25,13 @@ namespace MemberManagement.Models
             /// </summary>
             public int Age
             {
-                get {
+                get
+                {
                     age = DateTime.Now.Year - BirthDay.Year;
                     if (BirthDay > DateTime.Today.AddYears(-age)) age--;
                     return this.age;
                 }
-               
+
             }
             public DateTime RegisterTime { get { return DateTime.Now; } }
 
@@ -81,6 +82,7 @@ namespace MemberManagement.Models
         {
             public string UserName { get; set; }
             public string UserEmail { get; set; }
+            public DateTime UpdateTime { get { return DateTime.Now; } }
         }
 
         /// <summary>
@@ -99,12 +101,49 @@ namespace MemberManagement.Models
         {
             public string NewUserPwd { get; set; }
             public string CheckUserPwd { get; set; }
+            public DateTime UpdatePWDTime { get { return DateTime.Now; } }
         }
 
         /// <summary>
         /// 修改密碼回傳
         /// </summary>
         public class DoEditPwdOut
+        {
+            public string ErrMsg { get; set; }
+            public string ResultMsg { get; set; }
+        }
+
+        /// <summary>
+        /// [寄送驗證碼]參數
+        /// </summary>
+        public class SendMailTokenIn
+        {
+            public string UserID { get; set; }
+        }
+
+        /// <summary>
+        /// [寄送驗證碼]回傳
+        /// </summary>
+        public class SendMailTokenOut
+        {
+            public string ErrMsg { get; set; }
+            public string ResultMsg { get; set; }
+        }
+
+        /// <summary>
+        /// [重設密碼]參數
+        /// </summary>
+        public class DoResetPwdIn
+        {
+            public string NewUserPwd { get; set; }
+            public string CheckUserPwd { get; set; }
+            public DateTime UpdatePWDTime { get { return DateTime.Now; } }
+        }
+
+        /// <summary>
+        /// [重設密碼]回傳
+        /// </summary>
+        public class DoResetPwdOut
         {
             public string ErrMsg { get; set; }
             public string ResultMsg { get; set; }
